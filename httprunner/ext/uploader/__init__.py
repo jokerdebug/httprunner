@@ -136,7 +136,8 @@ def multipart_encoder(**kwargs):
     ensure_upload_ready()
     fields_dict = {}
     for key, value in kwargs.items():
-
+        if isinstance(value, bool):
+            value = str(value)
         if os.path.isabs(value):
             # value is absolute file path
             _file_path = value
